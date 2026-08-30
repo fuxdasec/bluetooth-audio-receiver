@@ -1,0 +1,32 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothAudioReceiver.Core", "src\BluetoothAudioReceiver.Core\BluetoothAudioReceiver.Core.csproj", "{A98E26FC-F292-47D5-AF50-2E984C022820}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothAudioReceiver.App", "src\BluetoothAudioReceiver.App\BluetoothAudioReceiver.App.csproj", "{87035A6B-165B-4795-91CD-3F7E804C713A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothAudioReceiver.Core.Tests", "tests\BluetoothAudioReceiver.Core.Tests\BluetoothAudioReceiver.Core.Tests.csproj", "{B3AFD402-D69D-4141-96AE-C3578D9E64A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A98E26FC-F292-47D5-AF50-2E984C022820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98E26FC-F292-47D5-AF50-2E984C022820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98E26FC-F292-47D5-AF50-2E984C022820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98E26FC-F292-47D5-AF50-2E984C022820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87035A6B-165B-4795-91CD-3F7E804C713A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87035A6B-165B-4795-91CD-3F7E804C713A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87035A6B-165B-4795-91CD-3F7E804C713A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87035A6B-165B-4795-91CD-3F7E804C713A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AFD402-D69D-4141-96AE-C3578D9E64A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AFD402-D69D-4141-96AE-C3578D9E64A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AFD402-D69D-4141-96AE-C3578D9E64A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AFD402-D69D-4141-96AE-C3578D9E64A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="ReceiverDisabled" xml:space="preserve"><value>Receptor desativado.</value></data>
+  <data name="WaitingForSource" xml:space="preserve"><value>Aguardando uma fonte de áudio Bluetooth pareada.</value></data>
+  <data name="EnablingReceiver" xml:space="preserve"><value>Habilitando o receptor A2DP...</value></data>
+  <data name="OpeningConnection" xml:space="preserve"><value>Abrindo a conexão de áudio...</value></data>
+  <data name="BluetoothConnected" xml:space="preserve"><value>Áudio Bluetooth conectado à saída padrão do Windows.</value></data>
+  <data name="ConnectionLost" xml:space="preserve"><value>Conexão perdida. Nova tentativa em {0:0}s.</value></data>
+</root>

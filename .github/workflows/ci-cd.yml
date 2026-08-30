@@ -1,0 +1,161 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+jobs:
+  validate:
+    name: Build and test
+    runs-on: windows-2025
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore BluetoothAudioReceiver.sln
+
+      - name: Verify formatting
+        run: dotnet format BluetoothAudioReceiver.sln --verify-no-changes --no-restore
+
+      - name: Build
+        run: dotnet build BluetoothAudioReceiver.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test BluetoothAudioReceiver.sln --configuration Release --no-build
+
+  release:
+    name: Build and release
+    if: github.event_name == 'push'
+    needs: validate
+    runs-on: windows-2025
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout complete history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Determine channel and version
+        id: release
+        shell: pwsh
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $false
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+              if ($env:GITHUB_REF_NAME -notmatch '^v(?<version>\d+\.\d+\.\d+)$') {
+                  throw "Invalid tag: '$env:GITHUB_REF_NAME'. Use vX.Y.Z."
+              }
+              $version = $Matches.version
+
+              git merge-base --is-ancestor HEAD origin/main
+              if ($LASTEXITCODE -ne 0) {
+                  throw "Tag $env:GITHUB_REF_NAME does not point to a commit on the main branch."
+              }
+
+              $informationalVersion = $version
+              $channel = 'stable'
+          }
+          else {
+              $latestTag = git tag --merged HEAD --list 'v*' --sort=-v:refname |
+                  Where-Object { $_ -match '^v\d+\.\d+\.\d+$' } |
+                  Select-Object -First 1
+
+              if ($latestTag) {
+                  $version = $latestTag.Substring(1)
+              }
+              else {
+                  [xml]$project = Get-Content 'src/BluetoothAudioReceiver.App/BluetoothAudioReceiver.App.csproj' -Raw
+                  $version = [string]$project.Project.PropertyGroup.Version
+              }
+
+              $revision = [int]$env:GITHUB_RUN_NUMBER
+              $shortSha = $env:GITHUB_SHA.Substring(0, 12)
+              $informationalVersion = "$version-continuous.$revision+$shortSha"
+              $channel = 'continuous'
+          }
+
+          "version=$version" >> $env:GITHUB_OUTPUT
+          "informational_version=$informationalVersion" >> $env:GITHUB_OUTPUT
+          "channel=$channel" >> $env:GITHUB_OUTPUT
+          Write-Host "Channel=$channel; version=$informationalVersion"
+
+      - name: Build executable and checksum
+        shell: pwsh
+        run: |
+          ./scripts/Build-ReleaseArtifacts.ps1 `
+              -Version '${{ steps.release.outputs.version }}' `
+              -InformationalVersion '${{ steps.release.outputs.informational_version }}'
+
+      - name: Publish continuous prerelease
+        if: steps.release.outputs.channel == 'continuous'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $false
+          $tag = 'continuous'
+          $title = 'Continuous build'
+          $notes = @"
+          Automated build of commit $env:GITHUB_SHA from the main branch.
+
+          This channel is replaced on every push and may be unstable. The executable is unsigned, so Windows SmartScreen may display a warning.
+          "@
+          $assets = @(Get-ChildItem 'artifacts/release' -File | Select-Object -ExpandProperty FullName)
+
+          gh release view $tag --repo $env:GITHUB_REPOSITORY *> $null
+          if ($LASTEXITCODE -eq 0) {
+              gh api --method PATCH "repos/$env:GITHUB_REPOSITORY/git/refs/tags/$tag" `
+                  -f "sha=$env:GITHUB_SHA" -F 'force=true'
+              if ($LASTEXITCODE -ne 0) { throw 'Could not move the continuous tag.' }
+
+              gh release edit $tag --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA `
+                  --title $title --notes $notes --prerelease --latest=false
+              if ($LASTEXITCODE -ne 0) { throw 'Could not update the continuous prerelease.' }
+
+              gh release upload $tag @assets --repo $env:GITHUB_REPOSITORY --clobber
+              if ($LASTEXITCODE -ne 0) { throw 'Could not replace the prerelease assets.' }
+          }
+          else {
+              gh release create $tag @assets --repo $env:GITHUB_REPOSITORY `
+                  --target $env:GITHUB_SHA --title $title --notes $notes --prerelease --latest=false
+              if ($LASTEXITCODE -ne 0) { throw 'Could not create the continuous prerelease.' }
+          }
+
+      - name: Publish stable release
+        if: steps.release.outputs.channel == 'stable'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $false
+          $tag = $env:GITHUB_REF_NAME
+          gh release view $tag --repo $env:GITHUB_REPOSITORY *> $null
+          if ($LASTEXITCODE -eq 0) {
+              throw "Release $tag already exists; stable releases are never overwritten."
+          }
+
+          $assets = @(Get-ChildItem 'artifacts/release' -File | Select-Object -ExpandProperty FullName)
+          gh release create $tag @assets --repo $env:GITHUB_REPOSITORY --verify-tag `
+              --title "Bluetooth Audio Receiver $tag" --generate-notes --latest
+          if ($LASTEXITCODE -ne 0) { throw "Could not create release $tag." }

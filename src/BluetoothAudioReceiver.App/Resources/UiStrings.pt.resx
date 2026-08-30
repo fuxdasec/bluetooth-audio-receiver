@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Subtitle" xml:space="preserve"><value>O telefone envia áudio; o Windows reproduz na saída padrão.</value></data>
+  <data name="SourceTooltip" xml:space="preserve"><value>Fontes A2DP pareadas encontradas pelo Windows</value></data>
+  <data name="Connect" xml:space="preserve"><value>Conectar</value></data>
+  <data name="Reconnect" xml:space="preserve"><value>Reconectar</value></data>
+  <data name="Refresh" xml:space="preserve"><value>Atualizar</value></data>
+  <data name="Diagnostics" xml:space="preserve"><value>Diagnóstico</value></data>
+  <data name="CopyDiagnostics" xml:space="preserve"><value>Copiar diagnóstico</value></data>
+  <data name="StartWithWindows" xml:space="preserve"><value>Iniciar em segundo plano com o Windows</value></data>
+  <data name="HideToTray" xml:space="preserve"><value>Ocultar na bandeja</value></data>
+  <data name="SelectSource" xml:space="preserve"><value>Selecione uma fonte de áudio Bluetooth na lista.</value></data>
+  <data name="Copied" xml:space="preserve"><value>Copiado para a área de transferência.</value></data>
+  <data name="CopyFailed" xml:space="preserve"><value>Não foi possível copiar o diagnóstico.</value></data>
+  <data name="StartupTitle" xml:space="preserve"><value>Inicialização</value></data>
+  <data name="Connected" xml:space="preserve"><value>Conectado</value></data>
+  <data name="Reconnecting" xml:space="preserve"><value>Reconectando</value></data>
+  <data name="Disabled" xml:space="preserve"><value>Desativado</value></data>
+  <data name="PreparingConnection" xml:space="preserve"><value>Preparando conexão</value></data>
+  <data name="WaitingForDevice" xml:space="preserve"><value>Aguardando o dispositivo</value></data>
+  <data name="Open" xml:space="preserve"><value>Abrir</value></data>
+  <data name="Exit" xml:space="preserve"><value>Encerrar</value></data>
+  <data name="StartupDisabled" xml:space="preserve"><value>Inicialização automática desativada.</value></data>
+  <data name="StartupEnabled" xml:space="preserve"><value>Inicialização automática ativada.</value></data>
+  <data name="StartupConfigurationFailed" xml:space="preserve"><value>O Windows não conseguiu atualizar a configuração de inicialização.</value></data>
+  <data name="NoDefaultOutput" xml:space="preserve"><value>Nenhuma saída padrão</value></data>
+  <data name="NotifyConnected" xml:space="preserve"><value>Recebendo áudio de {0}.</value></data>
+  <data name="NotifyConnectionLost" xml:space="preserve"><value>Conexão com {0} perdida. Reconectando automaticamente.</value></data>
+  <data name="TrayDeviceHeader" xml:space="preserve"><value>Origem: {0}</value></data>
+  <data name="TrayNoDevice" xml:space="preserve"><value>Nenhuma origem selecionada</value></data>
+  <data name="TrayTooltipFormat" xml:space="preserve"><value>Bluetooth Audio Receiver - {0}</value></data>
+  <data name="UpdateAvailableFormat" xml:space="preserve"><value>A versão {0} está disponível.</value></data>
+  <data name="UpdateDownload" xml:space="preserve"><value>Baixar</value></data>
+  <data name="UpdateDismiss" xml:space="preserve"><value>Dispensar</value></data>
+  <data name="UpdateCheckNow" xml:space="preserve"><value>Procurar atualizações</value></data>
+  <data name="UpdateUpToDate" xml:space="preserve"><value>Esta já é a versão mais recente.</value></data>
+  <data name="UpdateCheckFailed" xml:space="preserve"><value>Não foi possível consultar o GitHub para procurar atualizações.</value></data>
+  <data name="UpdateNotifications" xml:space="preserve"><value>Avisar sobre novas versões</value></data>
+  <data name="RepositoryTooltip" xml:space="preserve"><value>Abrir a página do projeto no GitHub</value></data>
+  <data name="SourceTitle" xml:space="preserve"><value>Origem</value></data>
+  <data name="PreferencesTitle" xml:space="preserve"><value>Preferências</value></data>
+  <data name="UrlCopied" xml:space="preserve"><value>Não foi possível abrir o navegador. O endereço foi copiado: {0}</value></data>
+  <data name="SourceLabel" xml:space="preserve"><value>Origem</value></data>
+  <data name="OutputLabel" xml:space="preserve"><value>Saída</value></data>
+</root>

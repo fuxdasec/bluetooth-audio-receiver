@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Subtitle" xml:space="preserve"><value>Your phone streams audio; Windows plays it through the default output.</value></data>
+  <data name="SourceTooltip" xml:space="preserve"><value>Paired A2DP sources detected by Windows</value></data>
+  <data name="Connect" xml:space="preserve"><value>Connect</value></data>
+  <data name="Reconnect" xml:space="preserve"><value>Reconnect</value></data>
+  <data name="Refresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="Diagnostics" xml:space="preserve"><value>Diagnostics</value></data>
+  <data name="CopyDiagnostics" xml:space="preserve"><value>Copy diagnostics</value></data>
+  <data name="StartWithWindows" xml:space="preserve"><value>Start in the background with Windows</value></data>
+  <data name="HideToTray" xml:space="preserve"><value>Hide to tray</value></data>
+  <data name="SelectSource" xml:space="preserve"><value>Select a Bluetooth audio source from the list.</value></data>
+  <data name="Copied" xml:space="preserve"><value>Copied to the clipboard.</value></data>
+  <data name="CopyFailed" xml:space="preserve"><value>Could not copy the diagnostics.</value></data>
+  <data name="StartupTitle" xml:space="preserve"><value>Startup</value></data>
+  <data name="Connected" xml:space="preserve"><value>Connected</value></data>
+  <data name="Reconnecting" xml:space="preserve"><value>Reconnecting</value></data>
+  <data name="Disabled" xml:space="preserve"><value>Disabled</value></data>
+  <data name="PreparingConnection" xml:space="preserve"><value>Preparing connection</value></data>
+  <data name="WaitingForDevice" xml:space="preserve"><value>Waiting for the device</value></data>
+  <data name="Open" xml:space="preserve"><value>Open</value></data>
+  <data name="Exit" xml:space="preserve"><value>Exit</value></data>
+  <data name="StartupDisabled" xml:space="preserve"><value>Startup disabled.</value></data>
+  <data name="StartupEnabled" xml:space="preserve"><value>Startup enabled.</value></data>
+  <data name="StartupConfigurationFailed" xml:space="preserve"><value>Windows could not update the startup configuration.</value></data>
+  <data name="NoDefaultOutput" xml:space="preserve"><value>No default output</value></data>
+  <data name="NotifyConnected" xml:space="preserve"><value>Receiving audio from {0}.</value></data>
+  <data name="NotifyConnectionLost" xml:space="preserve"><value>Lost the connection to {0}. Reconnecting automatically.</value></data>
+  <data name="TrayDeviceHeader" xml:space="preserve"><value>Source: {0}</value></data>
+  <data name="TrayNoDevice" xml:space="preserve"><value>No source selected</value></data>
+  <data name="TrayTooltipFormat" xml:space="preserve"><value>Bluetooth Audio Receiver - {0}</value></data>
+  <data name="UpdateAvailableFormat" xml:space="preserve"><value>Version {0} is available.</value></data>
+  <data name="UpdateDownload" xml:space="preserve"><value>Download</value></data>
+  <data name="UpdateDismiss" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="UpdateCheckNow" xml:space="preserve"><value>Check for updates</value></data>
+  <data name="UpdateUpToDate" xml:space="preserve"><value>This is the latest version.</value></data>
+  <data name="UpdateCheckFailed" xml:space="preserve"><value>Could not reach GitHub to check for updates.</value></data>
+  <data name="UpdateNotifications" xml:space="preserve"><value>Notify me about new versions</value></data>
+  <data name="RepositoryTooltip" xml:space="preserve"><value>Open the project page on GitHub</value></data>
+  <data name="SourceTitle" xml:space="preserve"><value>Source</value></data>
+  <data name="PreferencesTitle" xml:space="preserve"><value>Preferences</value></data>
+  <data name="UrlCopied" xml:space="preserve"><value>Could not open the browser. The address was copied to the clipboard: {0}</value></data>
+  <data name="SourceLabel" xml:space="preserve"><value>Source</value></data>
+  <data name="OutputLabel" xml:space="preserve"><value>Output</value></data>
+</root>
